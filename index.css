@@ -1,3 +1,7 @@
 #parent{
+    color: blue;
+}
+.myClass{
     color: red;
+    font-size: 16px;
 }
