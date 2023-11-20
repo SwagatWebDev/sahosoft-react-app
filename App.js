@@ -1,47 +1,86 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React.createElement => React Element => JavaScript Object => rendering to HTML Element
-// const heading =
-//     React.createElement("h1", {id: "parent"}, "Hello World from React 🚀");
-// console.log(heading);
-// const jsxHeading =
-//     (<div id = "heading">
-//     <h1 id="parent" className="head">
-//     Hello World from React🚀</h1>
-//     </div>);
-//     // JSX Code => React Element => JavaScript Object => renders to actual DOM as a HTML Element
-// console.log(jsxHeading);
-// const parentData = document.getElementById("root");
-// const root = ReactDOM.createRoot(parentData);
-// root.render(jsxHeading);
+/**
+ * Header Component
+ * - Logo
+ * - Nav Items(Home, About us, Carts etc)
+ * 
+ * Body Component
+ * - Search
+ * - Restaurant Container
+ * - Restaurant Cards
+ * 
+ * Footer Component
+ * - Copyrights
+ * - Links
+ * - Address
+ * - Contacts
+ */
 
-// const HeadingComponent = () => {
-//     return <h1 id="parent">My Functional based Component</h1>
-// };
+const Header = () => {
+    return (
+      <div className="header">
+        <div className="logo-container">
+           <img className="logo" src="https://assets.materialup.com/uploads/d8aacac5-efa3-425f-9922-ceb3748ce96a/preview.png"/>
+        </div>
+        <div className="nav-items">
+            <ul>
+                <li>Home</li>
+                <li>About us</li>
+                <li>Contact us</li>
+                <li>Carts</li>
+            </ul>
+        </div>
+      </div>
+    )
+}
 
-const element = <span>React Element</span>;
+const RestaurantCard = () => {
+    return (
+        <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+            <img
+            className="res-logo"
+            alt= "res-logo"
+            src= "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/l7xlzfeh626mnmhecyy4"
+            />
+            <h3>Meghana Foods</h3>
+            <h4>Biriyani, North Indian and Asian</h4>
+            <h4>4.3 Star</h4>
+            <h4>20 Mins</h4>
+        </div>
+    )
+}
 
-
-const number = 1000;
-
-const HeadingComponent = () => (
-    <div id="parent">
-        <h1>My Functional based Component🚀</h1> 
+const Body = () => {
+    return (
+    <div className="body">
+     <div className="search">Search</div>
+     <div className="res-container">
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+     </div>
     </div>
-);
+    );
+}
 
-const headingElement =
-    (<div id = "heading">
-        {number}
-    <h1 id="parent" className="head">
-    Hello World from React🚀</h1>
-    <HeadingComponent/>
-    </div>); 
-
-console.log(HeadingComponent);
+const AppLayout = () => {
+    return (
+        <div className="app">
+           <Header/>
+           <Body/>
+        </div>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(headingElement);
-
+root.render(<AppLayout/>);
