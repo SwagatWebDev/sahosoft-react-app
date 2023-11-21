@@ -13,3 +13,20 @@ React Practise App
 7. Minification (Productions Builds)
 8. Bundling
 9. Compressing
+
+/**
+ * Header Component
+ * - Logo
+ * - Nav Items(Home, About us, Carts etc)
+ * 
+ * Body Component
+ * - Search
+ * - Restaurant Container
+ * - Restaurant Cards
+ * 
+ * Footer Component
+ * - Copyrights
+ * - Links
+ * - Address
+ * - Contacts
+ */
