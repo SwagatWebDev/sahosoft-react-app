@@ -1,10 +1,11 @@
 import React from "react";
+import {LOGO_URL} from "../utils/contstants";
 
-const Header = () => {
+export const Header = () => {
     return (
       <div className="header">
         <div className="logo-container">
-           <img className="logo" src="https://assets.materialup.com/uploads/d8aacac5-efa3-425f-9922-ceb3748ce96a/preview.png"/>
+           <img className="logo" src={LOGO_URL}/>
         </div>
         <div className="nav-items">
             <ul>
