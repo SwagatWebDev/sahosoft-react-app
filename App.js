@@ -6,6 +6,7 @@ import Body from "./src/components/Body";
 const AppLayout = () => {
     return (
         <div className="app">
+            {console.log(<Body/>)};
            <Header/>
            <Body/>
         </div>
