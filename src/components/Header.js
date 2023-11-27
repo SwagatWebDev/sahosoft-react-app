@@ -1,5 +1,5 @@
 import {LOGO_URL} from "../utils/contstants";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const Header = () => {
     // local state variable
@@ -8,12 +8,13 @@ export const Header = () => {
       <div className="header">
         <div className="logo-container">
            <img className="logo" src={LOGO_URL}/>
+            <div className="app-name">Foodies</div>
         </div>
         <div className="nav-items">
             <ul>
-                <li>Home</li>
+                <li>Offers</li>
+                <li>Help</li>
                 <li>About us</li>
-                <li>Contact us</li>
                 <li>Carts</li>
                 <button className="login" onClick={() => {
                     btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
