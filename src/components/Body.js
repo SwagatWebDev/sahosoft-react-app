@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {CDN_URL, OFFER_NEAR_BY_BASE_URL} from "../utils/contstants";
+import {Link} from "react-router-dom";
 
 const Body = () => {
     // local state variable
@@ -11,7 +12,6 @@ const Body = () => {
     const [offerCarousel, setOfferCarousel] = useState([]);
     const [foodCarousel, setFoodCarousel] = useState([]);
     const [userName, setUserName] = useState("");
-    console.log("Body Rendered");
     useEffect(() => {
         fetchData();
     }, []);
@@ -22,7 +22,6 @@ const Body = () => {
         console.log(response);
         const offerCarousel = response?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
         const foodCarousel = response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info;
-        console.log(foodCarousel);
         const restaurantListData = response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setUserName("Swagat")
         setListOfRestaurant(restaurantListData);
@@ -121,7 +120,9 @@ const Body = () => {
             <div className="res-container">
                 {
                     filteredRestaurant.map((restaurant) => (
-                        <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
+                        <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} className="link-like-text">
+                            <RestaurantCard resData={restaurant}/>
+                        </Link>
                     ))
                 }
             </div>

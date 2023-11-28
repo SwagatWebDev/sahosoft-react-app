@@ -208,3 +208,12 @@
 .address p{
     margin: 0;
 }
+
+.about-page, .help-page, .menu{
+    min-height: 460px;
+}
+
+.link-like-text{
+    color: black;
+    text-decoration: none;
+}
