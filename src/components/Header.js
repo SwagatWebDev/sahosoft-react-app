@@ -20,7 +20,7 @@ export const Header = () => {
                         <Link to="/help">Help</Link>
                     </li>
                     <li>
-                        <Link to="/about">About us</Link>
+                        <Link to="/about">About Us</Link>
                     </li>
                     <li>Carts</li>
                     <button className="login" onClick={() => {
