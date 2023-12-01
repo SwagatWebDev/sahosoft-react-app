@@ -60,14 +60,16 @@ const Body = () => {
         <div className="body">
             <div className="offer-carousel">
                <h2>Best offer for you</h2>
-                <div className="offer-slide-arrows">
-                   <button className="scroll-button" onClick={() => handelScroll("left", "offer-carousel-container")}>
-                       &larr;
-                   </button>
-                    <button className="scroll-button" onClick={() => handelScroll("right", "offer-carousel-container")}>
-                        &rarr;
-                    </button>
-                </div>
+                {offerCarousel.length >= 4 && (
+                    <div className="offer-slide-arrows">
+                        <button className="scroll-button" onClick={() => handelScroll("left", "offer-carousel-container")}>
+                            &larr;
+                        </button>
+                        <button className="scroll-button" onClick={() => handelScroll("right", "offer-carousel-container")}>
+                            &rarr;
+                        </button>
+                    </div>
+                )}
                 <div className="offer-carousel">
                     <div id="offer-carousel-container" className="offer-carousel-container">
                         {offerCarousel.map((offer) => (
