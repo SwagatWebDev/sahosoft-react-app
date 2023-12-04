@@ -10,7 +10,7 @@ export const Header = () => {
         <div className="header">
             <div className="logo-container">
                 <Link to="/">
-                    <img className="logo" src={RestaurantLogo}/>
+                    <img className="logo" src={LOGO_URL}/>
                 </Link>
                 <div className="app-name">Foodies</div>
             </div>
