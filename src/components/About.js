@@ -30,7 +30,7 @@ class About extends Component{
                 </ul>
                 <h2>Contact Information</h2>
                 <p>Feel free to reach out to us for any inquiries or feedback. We value your thoughts and are here to assist you.</p>
-                <UserClass name={"Swagat"}/>
+                <UserClass name={"Swagat"} location={"Bangalore"}/>
                 <br/>
             </div>
         );

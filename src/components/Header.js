@@ -1,6 +1,7 @@
 import {LOGO_URL} from "../utils/contstants";
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import RestaurantLogo from "../images/preview.png";
 
 export const Header = () => {
     // local state variable
@@ -9,7 +10,7 @@ export const Header = () => {
         <div className="header">
             <div className="logo-container">
                 <Link to="/">
-                    <img className="logo" src={LOGO_URL}/>
+                    <img className="logo" src={RestaurantLogo}/>
                 </Link>
                 <div className="app-name">Foodies</div>
             </div>
