@@ -1,4 +1,17 @@
+import {useEffect} from "react";
+
 const Help = () => {
+    useEffect(()=> {
+        // logic of API Call
+        // console.log("usEffect called");
+        const timer = setInterval(() => {
+        console.log("Inside setInterval usEffect called");
+        }, 1000);
+        return () => {
+            clearInterval(timer);
+            console.log("return statement called at the time of unmounting");
+        }
+    }, []);
     return (
         <div className="help-page">
             <h1>Welcome to Foodies Customer Support</h1>

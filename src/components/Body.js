@@ -15,6 +15,7 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
     const fetchData = async () => {
         const API_URL = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9165757&lng=77.6101163&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
         const data = await fetch(API_URL);

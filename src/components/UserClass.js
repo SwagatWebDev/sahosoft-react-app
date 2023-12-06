@@ -8,11 +8,11 @@ class UserClass extends React.Component{
             userInfo: {
                 name: "Dummy",
                 location: "default"
-            }
+            },
         }
     }
 
-    async componentDidMount() {
+     async componentDidMount() {
         console.log("Child componentDidMount called");
         const data = await fetch("https://api.github.com/users/SwagatWebDev");
         const response = await data.json();
@@ -21,13 +21,25 @@ class UserClass extends React.Component{
         this.setState({
             userInfo: response
         })
+        //  this.timer  = setInterval(() => {
+        //      console.log("setInterval function called");
+        //  }, 1000);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
+        /**
+         * if(this.state.count1 !== prevState.count1){
+            // Logic to update and rerender
+        }
+        if(this.state.count2 !== prevState.count2){
+            // Logic to update and rerender
+        }
+         */
         console.log("Component Did updated");
     }
 
     componentWillUnmount() {
+        // clearInterval(this.timer);
         console.log("Component will unmount");
     }
 
