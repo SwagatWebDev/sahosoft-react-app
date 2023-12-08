@@ -209,7 +209,7 @@
     margin: 0;
 }
 
-.about-page, .help-page, .menu{
+.about-page, .help-page, .menu, .grocery-page{
     min-height: 460px;
 }
 
