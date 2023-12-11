@@ -30,3 +30,8 @@ React Practise App
  * - Address
  * - Contacts
  */
+
+Apply Styling:
+----------------
+
+

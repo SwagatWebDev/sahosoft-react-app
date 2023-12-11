@@ -1,25 +1,24 @@
-import {LOGO_URL} from "../utils/contstants";
-import {useState} from "react";
-import {Link} from "react-router-dom";
-import RestaurantLogo from "../images/preview.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import LogoImage from "../images/preview.png";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-export const Header = () => {
-    // local state variable
+const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
+
     return (
-        <div className="header">
-            <div className="logo-container">
+        <div className="flex justify-between items-center bg-gradient-to-r from-emerald-200 via-yellow-50 shadow-lg p-4">
+            <div className="logo-container flex items-center">
                 <Link to="/">
-                    <img className="logo" src={LOGO_URL}/>
+                    <img className="w-24" src={LogoImage} alt="Logo" />
                 </Link>
-                <div className="app-name">Foodies</div>
+                <div className="ml-4 text-xl font-bold">Foodies</div>
             </div>
-            <div className="nav-items">
-                <ul>
+            <div className="flex items-center">
+                <ul className="flex space-x-4">
                     <li>
-                        Online Status: {onlineStatus ? "✅": "🛑"}
+                        Online Status: {onlineStatus ? "✅" : "🛑"}
                     </li>
                     <li>Offers</li>
                     <li>
@@ -40,7 +39,7 @@ export const Header = () => {
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Header;

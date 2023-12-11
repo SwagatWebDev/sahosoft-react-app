@@ -10,32 +10,30 @@ import Error from "./src/components/Error";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 // import Grocery from "./src/components/Grocery";
 
-const Grocery = lazy(() => import("/src/components/Grocery"));
+const Grocery = lazy(() =>import("./src/components/Grocery"));
 
-const Help = lazy(() => import("/src/components/Help"));
+const Help = lazy(() =>import("./src/components/Help"));
 
 const AppLayout = () => {
-    return (
-        <div className="app">
-            <Header/>
-            <Outlet/>
-            <Footer/>
-        </div>
-    )
+    return (<div className="app">
+        <Header/>
+        <Outlet/>
+        <Footer/>
+    </div>);
 }
 
 const appRouter = createBrowserRouter([
     {
         path: "/",
-        element: <AppLayout/>,
+        element: <AppLayout />,
         children: [
             {
                 path: "/",
-                element: <Body/>
+                element: <Body />
             },
             {
                 path: "/about",
-                element: <About/>
+                element: <About />
             },
             {
                 path: "/help",
@@ -50,10 +48,15 @@ const appRouter = createBrowserRouter([
                 element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>
             },
         ],
-        errorElement: <Error/>
+        errorElement: <Error />
     },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);
+
+
+
+
+
