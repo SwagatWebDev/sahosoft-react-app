@@ -13,7 +13,7 @@ const RestaurantCategory = ({data}) => {
                 <div className="flex justify-between cursor-pointer"
                  onClick={handleClick}>
                     <span className="font-bold text-md">{data.title}({data.itemCards.length})</span>
-                    <span>&#9660;</span>
+                    {showItems ? <span>&#9650;</span> : <span>&#9660;</span>}
                 </div>
                 {/*Accordion Body*/}
                 {showItems && <RestaurantItemList items={data.itemCards}/>}
