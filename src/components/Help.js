@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import {useContext, useEffect} from "react";
+import UserContext from "../utils/UserContext";
 
 const Help = () => {
     useEffect(() => {
@@ -12,6 +13,8 @@ const Help = () => {
             console.log("useEffect return called");
         };
     }, []);
+
+    const {loggedInUser} = useContext(UserContext);
 
     console.log("render called");
     return (
@@ -35,6 +38,9 @@ const Help = () => {
                     <li className="text-lg">How can I track my order?</li>
                 </ul>
             </div>
+            {/*<div>*/}
+            {/*    User Info: {loggedInUser}*/}
+            {/*</div>*/}
         </div>
     );
 };
