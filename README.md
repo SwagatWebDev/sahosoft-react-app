@@ -31,7 +31,13 @@ React Practise App
  * - Contacts
  */
 
-Apply Styling:
+Redux Flow
 ----------------
 
+1. Install  @reduxjs/toolkit and react-redux
+2. Build our Store
+3. Slice (cartSlice)
+4. dispatch(action)
+5. Reducer
+6. Selector
 

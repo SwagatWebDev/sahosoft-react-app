@@ -7,7 +7,7 @@ import UserContext from "../utils/UserContext";
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
-    const {loggedInUser} = useContext(UserContext);
+    const {loggedInUser, profilePicture} = useContext(UserContext);
 
     return (
         <div className="flex justify-between items-center bg-gradient-to-r from-emerald-200 via-yellow-50 shadow-lg p-4">
@@ -33,7 +33,10 @@ const Header = () => {
                         <Link to="/grocery">Grocery</Link>
                     </li>
                     <li>Carts</li>
-                    <li className="font-bold">{loggedInUser}</li>
+                    <li className="font-bold flex items-center">
+                        <img className="w-8 h-7 rounded-full" src={profilePicture} alt="User Logo"/>
+                        <span className="ml-2">{loggedInUser}</span>
+                    </li>
                     {/*<button className="login" onClick={() => {*/}
                     {/*    btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");*/}
                     {/*}}>*/}
