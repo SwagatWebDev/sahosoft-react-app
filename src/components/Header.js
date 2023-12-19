@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import LogoImage from "../images/preview.png";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
-
+import {useSelector} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
     const {loggedInUser, profilePicture} = useContext(UserContext);
+
+    const cartItems = useSelector((store) => store.cart.items);
+    console.log(cartItems);
 
     return (
         <div className="flex justify-between items-center bg-gradient-to-r from-emerald-200 via-yellow-50 shadow-lg p-4">
@@ -32,7 +37,9 @@ const Header = () => {
                     <li>
                         <Link to="/grocery">Grocery</Link>
                     </li>
-                    <li>Carts</li>
+                    <li className="font-bold">
+                        <Link to="/cart"><FontAwesomeIcon icon={faCartShopping} />({cartItems.length} items)</Link>
+                    </li>
                     <li className="font-bold flex items-center">
                         <img className="w-8 h-7 rounded-full" src={profilePicture} alt="User Logo"/>
                         <span className="ml-2">{loggedInUser}</span>

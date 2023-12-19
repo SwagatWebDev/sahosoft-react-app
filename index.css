@@ -5,7 +5,7 @@
 .res-card {
     margin: 5px;
     padding: 1px;
-    width: 265px;
+    width: 262px;
     height: 385px;
     transition: border 0.3s;
     border-radius: 8px;
@@ -43,7 +43,7 @@
 .shimmer-card{
     margin: 5px;
     padding: 5px;
-    width: 276px;
+    width: 272px;
     height: 606px;
     background-color: #f0f0f0;
 }
@@ -73,7 +73,7 @@
     cursor: pointer;
 }
 
-.about-page, .help-page, .grocery-page{
+.about-page, .help-page, .grocery-page, .cart-page{
     min-height: 536px;
 }
 
