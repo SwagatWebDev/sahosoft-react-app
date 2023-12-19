@@ -6,7 +6,7 @@ const RestaurantCard = (props) => {
     return (
         <div className="res-card bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
             <img
-                className="res-logo w-full h-32 object-cover rounded-t-lg mb-4"
+                className="res-logo h-48 object-cover rounded-t-lg mb-4"
                 alt="res-logo"
                 src={CDN_URL + resData.info.cloudinaryImageId}
             />
@@ -36,14 +36,13 @@ export const withVegetarianRestaurant = () => {
     return (props) => {
         return (
             <div className="relative">
-                <div className="absolute transform rotate-45 bg-green-500 text-center
-                text-white font-semibold px-7 right-[-29px] top-[15px]">
-                    <span>Vegetarian</span>
+                <div className="absolute transform rotate-45 bg-green-500 text-center text-white font-semibold px-7 right-[-29px] top-[15px]">
+                    <span className="text-sm">Vegetarian</span>
                 </div>
-                <RestaurantCard {...props}/>
+                <RestaurantCard {...props} />
             </div>
         );
-    }
-}
+    };
+};
 
 export default RestaurantCard;

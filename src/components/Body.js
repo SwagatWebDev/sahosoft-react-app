@@ -18,7 +18,7 @@ const Body = () => {
         fetchData();
     }, []);
 
-    console.log(listOfRestaurants);
+    console.log("listOfRestaurants", listOfRestaurants);
 
     const VegetarianRestaurant = withVegetarianRestaurant(RestaurantCard);
 
@@ -75,6 +75,8 @@ const Body = () => {
 
     const onlineStatus = useOnlineStatus();
 
+    const { loggedInUser, setUserName } = useContext(UserContext);
+
     if (onlineStatus === false) {
         return (
             <h1>
@@ -83,21 +85,25 @@ const Body = () => {
         );
     }
 
-    const {loggedInUser, setUserName} = useContext(UserContext);
-
     return (listOfRestaurants ?? []).length === 0 ? (
         <Shimmer />
     ) : (
         <div className="body bg-gray-100 p-8">
-            {/*// This code is to change context data live
-            <div className="filter mb-4">
+            {/*<div className="filter mb-4">
                 <div className="search flex items-center space-x-4">
                     <input
                         type="text"
                         className="search-box flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Search for restaurants and food"
                         value={loggedInUser}
                         onChange={(e) => setUserName(e.target.value)}
                     />
+                    <button
+                        className="search-button bg-green-500 text-white px-4 py-2 rounded-md transition duration-300 hover:bg-green-600"
+                        onClick={handleSearch}
+                    >
+                        Search
+                    </button>
                 </div>
             </div>*/}
             <div className="offer-carousel mb-8">
@@ -231,11 +237,11 @@ const Body = () => {
                         className="link-like-text"
                     >
                         <div
-                            className="res-card m-5 p-5 w-64 h-72
-                            bg-white border border-gray-300 transition duration-300
-                            rounded-md overflow-hidden hover:border-2 hover:border-green-500 shadow-lg">
-                            {restaurant.info.veg ? (<VegetarianRestaurant resData={restaurant}/>)
-                                : (<RestaurantCard resData={restaurant}/>)}
+                            className="res-card m-5 p-5 w-64 h-72 bg-white border border-gray-300
+                            transition duration-300 rounded-md overflow-hidden
+                            hover:border-2 hover:border-green-500 shadow-lg">
+                            {restaurant.info.veg ? (<VegetarianRestaurant resData={restaurant}/>) :
+                                (<RestaurantCard resData={restaurant}/>)}
                         </div>
                     </Link>
                 ))}

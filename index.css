@@ -5,8 +5,8 @@
 .res-card {
     margin: 5px;
     padding: 1px;
-    width: 262px;
-    height: 385px;
+    width: 265px;
+    height: 450px;
     transition: border 0.3s;
     border-radius: 8px;
 }
@@ -43,7 +43,7 @@
 .shimmer-card{
     margin: 5px;
     padding: 5px;
-    width: 272px;
+    width: 276px;
     height: 606px;
     background-color: #f0f0f0;
 }
@@ -178,3 +178,6 @@
     transition: border 0.3s;
     border-radius: 8px;
 }
+
+
+
