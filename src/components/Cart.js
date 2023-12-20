@@ -6,7 +6,24 @@ const Cart = () => {
 
     const cartItems = useSelector((store) => store.cart.items);
 
+    // useSelector((store) => store);
+    //
+    // const cartItems = store.cart.item;
+
     const dispatch = useDispatch();
+
+    const calculateTotalPrice = () => {
+        let totalPrice = 0;
+        return cartItems.reduce((total, item) => {
+            const itemPrice = item.card.info.price || item.card.info.defaultPrice || 0;
+            totalPrice += itemPrice;
+            return Math.round(totalPrice / 100);
+        }, 0)
+    };
+
+    const handleProceedToCheckout = () => {
+        console.log('Proceeding Checkout')
+    }
 
     const handleClearCart = () => {
         dispatch(clearItem());
@@ -24,7 +41,18 @@ const Cart = () => {
                     Clear Cart
                 </button>
                 {cartItems.length === 0 ? (<h1 className="text-gray-600 font-bold mt-4">Cart is empty. Add Items to the cart!</h1>):
-                    (<RestaurantItemList items={cartItems}/>)
+                    (
+                        <div>
+                            <RestaurantItemList items={cartItems}/>
+                            <div className="mt-4">
+                                <p className="text-lg font-bold">Total Price: ₹{calculateTotalPrice().toFixed(2)}</p>
+                                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-center mt-4 hover:bg-blue-700"
+                                onClick={handleProceedToCheckout}>
+                                    Proceed to checkout
+                                </button>
+                            </div>
+                        </div>
+                    )
                 }
             </div>
         </div>
