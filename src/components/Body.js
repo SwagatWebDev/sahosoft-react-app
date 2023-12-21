@@ -108,7 +108,7 @@ const Body = () => {
             </div>*/}
             <div className="offer-carousel mb-8">
                 <h2 className="text-3xl font-bold mb-4 text-green-600">
-                    Best offers for you Swagat
+                    Best offers for you
                 </h2>
                 {offerCarousel.length >= 4 && (
                     <div className="offer-slide-arrows flex items-center space-x-4">
@@ -216,9 +216,9 @@ const Body = () => {
                     >
                         Search
                     </button>
-                </div>
-                <button
-                    className="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 hover:bg-blue-600"
+            </div>
+            <button
+                className="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 hover:bg-blue-600"
                     onClick={() => {
                         const filteredList = filteredRestaurant.filter(
                             (res) => res.info.avgRating >= 4.2

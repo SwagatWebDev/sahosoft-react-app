@@ -1,20 +1,28 @@
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useMemo, useState} from "react";
 import UserContext from "../utils/UserContext";
+import {findNthPrime} from "../utils/helper";
 
 const Help = () => {
-    useEffect(() => {
-        const timer = setInterval(() => {
-            console.log("Inside set Interval componentDidMount called");
-        }, 1000);
-        console.log("useEffect called");
-        // Used for unmounting phase
-        return () => {
-            clearInterval(timer);
-            console.log("useEffect return called");
-        };
-    }, []);
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         console.log("Inside set Interval componentDidMount called");
+    //     }, 1000);
+    //     console.log("useEffect called");
+    //     // Used for unmounting phase
+    //     return () => {
+    //         clearInterval(timer);
+    //         console.log("useEffect return called");
+    //     };
+    // }, []);
 
     const {loggedInUser} = useContext(UserContext);
+    const [text, setText] = useState(0);
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    // const nthPrimeNumber = findNthPrime(text);
+
+    const nthPrimeNumber = useMemo(() => findNthPrime(text), [text]);
+
+    console.log("Text is", text);
 
     console.log("render called");
     return (
@@ -38,9 +46,29 @@ const Help = () => {
                     <li className="text-lg">How can I track my order?</li>
                 </ul>
             </div>
-            {/*<div>*/}
-            {/*    User Info: {loggedInUser}*/}
-            {/*</div>*/}
+            <div className={"m-4 p-2 w-96 h-96 border border-black text-center text-black"
+            + (isDarkTheme && "mt-1 bg-blue-700")}>
+                <p className="font-bold">Memorization Example</p>
+                <button className="m-10 p-2 bg-green-500 rounded-lg cursor-pointer"
+                onClick={() => {
+                    console.log("Button Clicked")
+                    return setIsDarkTheme(!isDarkTheme)
+                }
+                }>
+                    Toggle Theme
+                </button>
+                <div>
+                    <input
+                        className="border border-black w-72 px-2"
+                        type="number"
+                        value = {text}
+                        onChange = {(e) => setText(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <h1 className="mt-4 font-bold text-lg">nth Prime: {nthPrimeNumber}</h1>
+                </div>
+            </div>
         </div>
     );
 };
