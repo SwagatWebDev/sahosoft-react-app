@@ -1,4 +1,4 @@
-import {useContext, useEffect, useMemo, useState} from "react";
+import {useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
 import UserContext from "../utils/UserContext";
 import {findNthPrime} from "../utils/helper";
 
@@ -18,11 +18,23 @@ const Help = () => {
     const {loggedInUser} = useContext(UserContext);
     const [text, setText] = useState(0);
     const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+    const [textValue, setTextValue] = useState(0);
+    const [isDark, setIsDark] = useState(false);
     // const nthPrimeNumber = findNthPrime(text);
 
     const nthPrimeNumber = useMemo(() => findNthPrime(text), [text]);
 
-    console.log("Text is", text);
+    const nthPrimeCallback = useCallback(() => {
+        // console.log("Calculate Prime Number of", textValue)
+        return findNthPrime(textValue);
+    }, [textValue])
+
+    let x = 0;
+    const [y, setY] = useState(0);
+    console.log("value of y is", y);
+
+    const ref = useRef(0);
 
     console.log("render called");
     return (
@@ -34,7 +46,8 @@ const Help = () => {
             <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-2">Contact Information</h2>
                 <p>
-                    You can reach us via email at <strong className="text-green-600">support@foodies.com</strong> or by phone at{" "}
+                    You can reach us via email at <strong className="text-green-600">support@foodies.com</strong> or by
+                    phone at{" "}
                     <strong className="text-green-600">+1 (123) 456-7890</strong>.
                 </p>
             </div>
@@ -46,27 +59,87 @@ const Help = () => {
                     <li className="text-lg">How can I track my order?</li>
                 </ul>
             </div>
-            <div className={"m-4 p-2 w-96 h-96 border border-black text-center text-black"
-            + (isDarkTheme && "mt-1 bg-blue-700")}>
-                <p className="font-bold">Memorization Example</p>
-                <button className="m-10 p-2 bg-green-500 rounded-lg cursor-pointer"
-                onClick={() => {
-                    console.log("Button Clicked")
-                    return setIsDarkTheme(!isDarkTheme)
-                }
-                }>
-                    Toggle Theme
-                </button>
-                <div>
-                    <input
-                        className="border border-black w-72 px-2"
-                        type="number"
-                        value = {text}
-                        onChange = {(e) => setText(e.target.value)}
-                    />
+            <h2 className="text-2xl font-bold mb-2 mt-8">useMemo, useCallback and useRef Hooks in React</h2>
+            <div className="flex">
+                <div className={"m-4 p-2 w-96 h-96 border border-black text-center text-black"
+                    + (isDarkTheme && "mt-1 bg-blue-700")}>
+                    <p className="font-bold">Memorization Example(useMemo)</p>
+                    <button className="m-10 p-2 bg-green-500 rounded-lg cursor-pointer"
+                            onClick={() => {
+                                console.log("Button Clicked")
+                                return setIsDarkTheme(!isDarkTheme)
+                            }
+                            }>
+                        Toggle Theme
+                    </button>
+                    <div>
+                        <input
+                            className="border border-black w-72 px-2"
+                            type="number"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <h1 className="mt-4 font-bold text-lg">nth Prime: {nthPrimeNumber}</h1>
+                    </div>
                 </div>
                 <div>
-                    <h1 className="mt-4 font-bold text-lg">nth Prime: {nthPrimeNumber}</h1>
+                    <div className={"m-4 p-2 w-96 h-96 border border-black text-center text-black"
+                        + (isDark && "mt-1 bg-amber-950")}>
+                        <p className="font-bold">Memorization Example(useCallback)</p>
+                        <button className="m-10 p-2 bg-green-500 rounded-lg cursor-pointer"
+                                onClick={() => {
+                                    console.log("Button Clicked")
+                                    return setIsDark(!isDark)
+                                }
+                                }>
+                            Toggle Theme
+                        </button>
+                        <div>
+                            <input
+                                className="border border-black w-72 px-2"
+                                type="number"
+                                value={textValue}
+                                onChange={(e) => setTextValue(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <h1 className="mt-4 font-bold text-lg">nth Prime: {nthPrimeCallback()}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className="m-4 p-2 w-96 h-96 border border-black text-center text-black">
+                    <p className="font-bold">useRef Example</p>
+                    <div>
+                        <button className="m-10 p-2 rounded-lg cursor-pointer bg-green-500"
+                                onClick={() => {
+                                    x = x + 1;
+                                    console.log("Button Clicked, value of x is", x);
+                                }}>
+                            Increase x
+                        </button>
+                        <span className="font-bold text-lg">Let x = {x}</span>
+                    </div>
+                    <div>
+                        <button className="m-10 p-2 rounded-lg cursor-pointer bg-green-500"
+                                onClick={() => {
+                                    setY(y + 1);
+                                }}>
+                            Increase y
+                        </button>
+                        <span className="font-bold text-lg">State = {y}</span>
+                    </div>
+                    <div>
+                        <button className="m-10 p-2 rounded-lg cursor-pointer bg-green-500"
+                                onClick={() => {
+                                    ref.current = ref.current + 1
+                                    console.log("value of ref", ref.current)
+                                }}>
+                            Increase Ref
+                        </button>
+                        <span className="font-bold text-lg">Ref = {ref.current}</span>
+                    </div>
                 </div>
             </div>
         </div>
