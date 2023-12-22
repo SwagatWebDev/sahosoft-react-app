@@ -108,7 +108,7 @@ const Body = () => {
             </div>*/}
             <div className="offer-carousel mb-8">
                 <h2 className="text-3xl font-bold mb-4 text-green-600">
-                    Best offers for you Swagat
+                    Best offers for you
                 </h2>
                 {offerCarousel.length >= 4 && (
                     <div className="offer-slide-arrows flex items-center space-x-4">
